@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "53314612522",
+    "project_id": "tayarh-cf3a3",
+    "storage_bucket": "tayarh-cf3a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53314612522:android:ad9ea8ab5e60b150014253",
+        "android_client_info": {
+          "package_name": "com.example.tayarh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBBd9jdJidiHjmRCF0Tnr3TH9L6dqWW0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
