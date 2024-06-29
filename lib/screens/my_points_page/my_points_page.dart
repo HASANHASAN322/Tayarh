@@ -43,10 +43,9 @@ class MyPoints extends StatelessWidget {
                   color: dark ? MyColors.whiteColor : MyColors.blackColor),
             ),
           ]),
-//todo add image string
           WidgetTitle(
             title: MyTexts.tayarhPoints,
-            image: '',
+            image: "assets/icons/my_point.png",
             bgColor: MyColors.mainColor.withOpacity(0.4),
             isPoint: true,
             points: '3444',

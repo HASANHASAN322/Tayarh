@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
 import 'package:tayarh/utils/constant/text_strings.dart';
 
 import '../../theme/dark_mode.dart';
@@ -45,10 +43,9 @@ class MyWallet extends StatelessWidget {
                   color: dark ? MyColors.whiteColor : MyColors.blackColor),
             ),
           ]),
-//todo add image string
           WidgetTitle(
             title: MyTexts.tayarhCash,
-            image: '',
+            image: "assets/icons/my_point.png",
             bgColor: MyColors.mainColor.withOpacity(0.4),
             isPoint: false,
             cash: '80',

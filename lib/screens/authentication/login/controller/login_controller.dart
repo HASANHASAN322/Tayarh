@@ -49,14 +49,14 @@ class LoginController extends GetxController {
   void signIn(){
     try {
 
-      if (!signInFormKey.currentState!.validate()) {
+      if (phoneController.text.isEmpty) {
         MyPobUp.warningSnackBar(
             title: 'Please write an valid PhoneNumber',
             message:
             'PhoneNumber Is Required') ;
         return;
       }
-
+update() ;
       /// privacy policy check
       if (!privacyPolicy.value) {
         MyPobUp.warningSnackBar(
@@ -73,7 +73,7 @@ class LoginController extends GetxController {
           message: 'You need to verify your number now!');
 
       /// move to verify email screen
-      Get.to(() => HomeScreen());
+      // Get.to(() => HomeScreen());
 
     } catch (e) {
       /// show errors to user

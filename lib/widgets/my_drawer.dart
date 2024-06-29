@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tayarh/utils/constant/colors.dart';
 import 'package:tayarh/utils/constant/size.dart';
-import 'package:tayarh/widgets/draweitem.dart';
+
+import 'drawerItem.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,21 +14,21 @@ class MyDrawer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: MySize.defaultSpace,top: MySize.defaultSpace),
         child: Drawer(
-          backgroundColor: Color(0xBB0F5367),
+          backgroundColor: const Color(0xBB0F5367),
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only( top: 80,),
               child: Column(
                 children: [
                   headerWiget(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
                         color: MyColors.darkColor,
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(12),
                             topRight: Radius.circular(12))),
                     child: Column(
@@ -81,7 +82,7 @@ class MyDrawer extends StatelessWidget {
                         ),
 
 
-                        Divider(color: Color(0x459e9e9e),endIndent: 15,indent: 15,),
+                        const Divider(color: Color(0x459e9e9e),endIndent: 15,indent: 15,),
                         Padding(
                           padding: const EdgeInsets.only(top: 20.0,left: 15),
                           child: DrawerItem(
@@ -122,7 +123,7 @@ class MyDrawer extends StatelessWidget {
                         ),
 
 
-                        SizedBox(height: 10,)
+                        const SizedBox(height: 10,)
                       ],
                     ),
                   )
@@ -183,8 +184,8 @@ class MyDrawer extends StatelessWidget {
   Widget headerWiget() {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 25.0),
+        const Padding(
+          padding: EdgeInsets.only(left: 25.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -195,10 +196,10 @@ class MyDrawer extends StatelessWidget {
             ],
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Padding(
           padding: const EdgeInsets.only(right: 18.0,bottom: 20),
-          child: Container(
+          child: SizedBox(
             height: 50,
             width: 50,
             child: Image.asset(
