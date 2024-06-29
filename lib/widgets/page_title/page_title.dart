@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../constant/size.dart';
+import '../../utils/constant/size.dart';
+
 
 class PageTitle extends StatelessWidget {
   const PageTitle({
