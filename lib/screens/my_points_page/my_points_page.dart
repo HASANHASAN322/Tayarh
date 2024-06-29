@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tayarh/utils/constant/image_strings.dart';
 import 'package:tayarh/utils/constant/text_strings.dart';
 
 import '../../theme/dark_mode.dart';
@@ -45,7 +46,7 @@ class MyPoints extends StatelessWidget {
           ]),
           WidgetTitle(
             title: MyTexts.tayarhPoints,
-            image: "assets/icons/my_point.png",
+            image: MyImage.pointLogo,
             bgColor: MyColors.mainColor.withOpacity(0.4),
             isPoint: true,
             points: '3444',

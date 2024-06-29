@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                     .width,
                 child: Obx(() {
                   return GoogleMap(
-                    mapType: MapType.terrain,
+                    mapType: MapType.normal,
                     initialCameraPosition: CameraPosition(
                       target:
                       LatLng(
@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                 top: MySize.defaultSpace,
                 right: MySize.defaultSpace,
                 child: MyWalletButton(
-                  onTap: () {},
+                  onTap: () => homeController.openWalletBottomSheet(context),
                 ),
               ),
 

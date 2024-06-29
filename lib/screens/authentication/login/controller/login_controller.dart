@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:tayarh/widgets/popup/popup.dart';
+
 import '../../../home/home_screen.dart';
 
 class LoginController extends GetxController {
@@ -73,7 +74,7 @@ update() ;
           message: 'You need to verify your number now!');
 
       /// move to verify email screen
-      // Get.to(() => HomeScreen());
+      Get.to(() => HomeScreen());
 
     } catch (e) {
       /// show errors to user
