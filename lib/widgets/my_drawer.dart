@@ -81,7 +81,7 @@ class MyDrawer extends StatelessWidget {
                         child: DrawerItem(
                             name: "History",
                             icon: MyImage.history,
-                            onPress: () => onItemPressed(context, index: 5)),
+                            onPress: () => homeController.openHistoryBottomSheet(context)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
@@ -89,7 +89,7 @@ class MyDrawer extends StatelessWidget {
                         child: DrawerItem(
                             name: "Settings",
                             icon: MyImage.settings,
-                            onPress: () => onItemPressed(context, index: 6)),
+                            onPress: () => homeController.openSettingBottomSheet(context)),
                       ),
                       const Divider(
                         color: Color(0x459e9e9e),

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:tayarh/screens/my_wallet_page/my_wallet_page.dart';
+import 'package:tayarh/screens/set_trip_page/set_trip_page.dart';
+import 'package:tayarh/screens/setting/setting.dart';
 import 'package:tayarh/widgets/popup/popup.dart';
 
+import '../../history/history.dart';
 import '../../my_points_page/my_points_page.dart';
 
 class HomeController extends GetxController {
@@ -38,6 +41,27 @@ Future<dynamic> openWalletBottomSheet(BuildContext context){
         context: context,
         isScrollControlled: true,
         builder: (_) => const MyWallet(),) ;
+}
+
+Future<dynamic> openHistoryBottomSheet(BuildContext context){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => const MyHistory(),) ;
+}
+
+Future<dynamic> openSettingBottomSheet(BuildContext context){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => const MySettings(),) ;
+}
+
+Future<dynamic> openTripBottomSheet(BuildContext context){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => const SetTripWidget(),) ;
 }
 
 

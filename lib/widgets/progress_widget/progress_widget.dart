@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../theme/dark_mode.dart';
 import '../../utils/constant/colors.dart';
@@ -6,15 +7,17 @@ import '../../utils/constant/size.dart';
 
 class ProgressWidget extends StatelessWidget {
   const ProgressWidget({
-    super.key, required this.date, required this.points,
+    super.key,
+    required this.date,
+    required this.points,
   });
 
-  final DateTime date ;
-  final String points ;
+  final DateTime date;
+  final String points;
 
   @override
   Widget build(BuildContext context) {
-    final dark = DarkMode.isDarkMode(context) ;
+    final dark = DarkMode.isDarkMode(context);
     return Container(
       height: 80,
       width: double.infinity,
@@ -31,12 +34,12 @@ class ProgressWidget extends StatelessWidget {
             children: [
               /// date
               Text(
-                date.toString(),
+                DateFormat('yyyy-MM-dd').format(date).toString(),
                 style: TextStyle(
                     fontSize: 12,
-                    color:
-                    dark ? MyColors.whiteColor : MyColors.blackColor),
-              )  ,
+                    color: dark ? MyColors.whiteColor : MyColors.blackColor),
+              ),
+
               /// progress state
               Container(
                 height: 30,
@@ -44,10 +47,15 @@ class ProgressWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: MyColors.greenColor.withOpacity(0.3)),
-                child: Center(child: Text('Added' , style: TextStyle(color: MyColors.greenColor),)),
+                child: Center(
+                    child: Text(
+                  'Added',
+                  style: TextStyle(color: MyColors.greenColor),
+                )),
               )
             ],
-          ) ,
+          ),
+
           /// points added
           Text(
             '+$points',

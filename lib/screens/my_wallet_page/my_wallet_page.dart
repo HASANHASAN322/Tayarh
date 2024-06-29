@@ -4,6 +4,7 @@ import 'package:tayarh/utils/constant/text_strings.dart';
 import '../../theme/dark_mode.dart';
 import '../../utils/constant/colors.dart';
 import '../../utils/constant/size.dart';
+import '../../widgets/my_payment_methods/my_payment_methods.dart';
 import '../../widgets/progress_widget/progress_widget.dart';
 import '../../widgets/widget_title/widget_title.dart';
 
@@ -55,10 +56,29 @@ class MyWallet extends StatelessWidget {
             height: 10,
           ),
 
+          /// payment methods
+          Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+            Text(
+              MyTexts.paymentMethods,
+              style: TextStyle(
+                  fontSize: 18,
+                  color: dark ? MyColors.whiteColor : MyColors.blackColor),
+            ),
+          ]),
+          const SizedBox(
+            height: 10,
+          ),
+
+          /// my payment methods
+          const MyPaymentMethods(),
+          const SizedBox(
+            height: 10,
+          ),
+
           /// progress
           Row(mainAxisAlignment: MainAxisAlignment.start, children: [
             Text(
-              MyTexts.progress,
+              MyTexts.transactions,
               style: TextStyle(
                   fontSize: 18,
                   color: dark ? MyColors.whiteColor : MyColors.blackColor),
@@ -68,7 +88,7 @@ class MyWallet extends StatelessWidget {
             height: 10,
           ),
           ProgressWidget(
-            date: DateTime(2024 , 3 , 29 , 12 ,00 ),
+            date: DateTime(2024, 3, 29, 12, 00),
             points: '12',
           )
         ],
@@ -76,4 +96,3 @@ class MyWallet extends StatelessWidget {
     );
   }
 }
-

@@ -120,11 +120,11 @@ class HomeScreen extends StatelessWidget {
                   child: MyPlacesWidget()),
 
               /// where to ?
-              const Positioned(
+               Positioned(
                 bottom: MySize.defaultSpace * 2.5,
                 left: MySize.defaultSpace,
                 right: MySize.defaultSpace,
-                child: WhereToWidget(),
+                child: WhereToWidget(onTap: ()=> homeController.openTripBottomSheet(context),),
               ),
             ])));
   }

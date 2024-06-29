@@ -29,7 +29,7 @@ class WidgetTitle extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.all(MySize.defaultSpace),
-      height: 150,
+      height: 180,
       width: double.infinity,
       decoration: BoxDecoration(
           color: bgColor, borderRadius: BorderRadius.circular(12)),
@@ -68,17 +68,30 @@ class WidgetTitle extends StatelessWidget {
               : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '\$${cash!}',
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              dark ? MyColors.whiteColor : MyColors.blackColor),
+                    Row(
+                      children: [
+                        Text(
+                          '\$',
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color:
+                             MyColors.greenColor),
+                        ),
+                        const SizedBox(width: 5,) ,
+                        Text(
+                          cash!,
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  dark ? MyColors.whiteColor : MyColors.blackColor),
+                        ),
+                      ],
                     ),
                     Container(
-                      height: 35,
-                      width: 100,
+                      height: 40,
+                      width: 120,
                       decoration: BoxDecoration(
                           color: MyColors.greenColor,
                           borderRadius: BorderRadius.circular(25)),
@@ -86,7 +99,8 @@ class WidgetTitle extends StatelessWidget {
                         child: Text(
                           MyTexts.addFounds,
                           style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
                               color: dark
                                   ? MyColors.whiteColor
                                   : MyColors.blackColor),
