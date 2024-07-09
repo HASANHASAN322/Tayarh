@@ -46,7 +46,7 @@ class MyDrawer extends StatelessWidget {
                         child: DrawerItem(
                           name: "Notifications",
                           icon: MyImage.notification,
-                          onPress: () => onItemPressed(context, index: 0),
+                          onPress: () => homeController.openNotificationBottomSheet(context),
                         ),
                       ),
                       Padding(
@@ -55,7 +55,7 @@ class MyDrawer extends StatelessWidget {
                         child: DrawerItem(
                           name: "Favorites",
                           icon: MyImage.favorites,
-                          onPress: () => onItemPressed(context, index: 1),
+                          onPress: () => homeController.openFavoriteBottomSheet(context),
                         ),
                       ),
                       Padding(

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import '../../utils/constant/colors.dart';
@@ -7,8 +5,10 @@ import '../../utils/constant/size.dart';
 import '../main_btn/main_btn.dart';
 
 class MyPlacesWidget extends StatelessWidget {
+
+ final bool is_way;
   const MyPlacesWidget({
-    super.key,
+    super.key, required this.is_way,
   });
 
   @override
@@ -20,8 +20,7 @@ class MyPlacesWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            MainButton(
-                title: 'New Place', fontSize: 14, onPressed: () {}),
+            MainButton(title: is_way?'OTP':'New Place', fontSize: 14, onPressed: () {}),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: MySize.sm),
               width: 2,
@@ -34,14 +33,14 @@ class MyPlacesWidget extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return MainButton(
-                      title: 'Home',
+                      title: is_way?"1":'Home',
                       fontSize: 14,
                       isBlue: false,
                       onPressed: () {});
                 },
                 separatorBuilder: (context, index) => const SizedBox(
-                  width: MySize.sm,
-                ),
+                      width: MySize.sm,
+                    ),
                 itemCount: 6)
           ],
         ),
