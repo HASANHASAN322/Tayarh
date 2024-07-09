@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme/dark_mode.dart';
 import '../../utils/constant/colors.dart';
-import '../../utils/constant/image_strings.dart';
-import '../../utils/constant/text_strings.dart';
 
 class CarTravelWidget extends StatelessWidget {
   const CarTravelWidget({
