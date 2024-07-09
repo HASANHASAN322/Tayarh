@@ -5,10 +5,11 @@ import '../../utils/constant/image_strings.dart';
 import '../../utils/constant/text_strings.dart';
 
 class WhereToWidget extends StatelessWidget {
-  const WhereToWidget({
-    super.key,
+   const WhereToWidget({
+    super.key, required this.onTap,
   });
 
+  final void Function() onTap ;
   @override
   Widget build(BuildContext context) {
     final dark = DarkMode.isDarkMode(context);
@@ -40,26 +41,29 @@ class WhereToWidget extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: dark
-                    ? MyColors.hintColor.withOpacity(0.6)
-                    : MyColors.hintColor.withOpacity(0.2)),
-            child: TextField(
-              decoration: InputDecoration(
-                prefixIcon: Image.asset(
-                  MyImage.searchIcon,
-                ),
-                hintText: 'Where to?',
-                border: InputBorder.none,
-                hintStyle: TextStyle(
-                  color: dark ? MyColors.whiteColor : MyColors.darkColor,
-                ),
-              ),
-              onSubmitted: (value) {
-              },
-            ),
+          InkWell(
+            onTap: onTap,
+            child: Container(
+              height: 60,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: dark
+                        ? MyColors.hintColor.withOpacity(0.6)
+                        : MyColors.hintColor.withOpacity(0.2)),
+                child: Row(
+                  children: [
+                    Image(image: AssetImage(MyImage.searchIcon)),
+                    const SizedBox(width: 10,) ,
+                    Text(
+                      MyTexts.whereTo,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: dark ? MyColors.whiteColor : MyColors.darkColor,
+                      ),
+                    )
+                  ],
+                )),
           ),
           const SizedBox(
             height: 10,

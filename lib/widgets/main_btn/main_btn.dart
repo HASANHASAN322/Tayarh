@@ -29,6 +29,12 @@ class MainButton extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: MyColors.borderColor.withOpacity(0.6) ,
+              blurRadius: 0.5 ,
+            )
+          ],
             color: isBlue
                 ? MyColors.mainColor
                 : dark

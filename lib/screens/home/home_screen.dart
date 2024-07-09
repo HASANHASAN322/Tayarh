@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
         key: homeController.scaffoldKey,
+
         drawer: const MyDrawer(),
         body: SafeArea(
             child: Stack(children: [
@@ -202,4 +203,5 @@ class HomeScreen extends StatelessWidget {
                 ),
         ])));
   }
+
 }

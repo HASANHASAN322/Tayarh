@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 import 'package:tayarh/screens/my_wallet_page/my_wallet_page.dart';
 import 'package:tayarh/widgets/popup/popup.dart';
 
-import '../../favorite/favorites_screen.dart';
 import '../../history/history.dart';
 import '../../my_points_page/my_points_page.dart';
-import '../../notifications/notifications_screen.dart';
 
 class HomeController extends GetxController {
   static HomeController get instance => Get.find();
@@ -44,24 +42,26 @@ Future<dynamic> openWalletBottomSheet(BuildContext context){
         isScrollControlled: true,
         builder: (_) => const MyWallet(),) ;
 }
-Future<dynamic> openNotificationBottomSheet(BuildContext context){
-    return showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (_) => const NotificationsScreen(),) ;
-}
-Future<dynamic> openFavoriteBottomSheet(BuildContext context){
-    return showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (_) => const FavoriteScreen(),) ;
-}
 
 Future<dynamic> openHistoryBottomSheet(BuildContext context){
     return showModalBottomSheet(
         context: context,
         isScrollControlled: true,
         builder: (_) => const MyHistory(),) ;
+}
+
+Future<dynamic> openSettingBottomSheet(BuildContext context){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => const MySettings(),) ;
+}
+
+Future<dynamic> openTripBottomSheet(BuildContext context){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => const SetTripWidget(),) ;
 }
 
 
