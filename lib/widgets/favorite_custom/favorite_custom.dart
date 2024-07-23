@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tayarh/widgets/progress_widget/progress_widget.dart';
 import '../../../theme/dark_mode.dart';
 import '../../../utils/constant/colors.dart';
 import '../../../utils/constant/size.dart';

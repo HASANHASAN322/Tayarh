@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tayarh/screens/favorite/controller/favorites_controller.dart';
-import 'package:tayarh/screens/favorite/widgets/custom_tab_barView.dart';
+import 'package:tayarh/screens/favorite/widgets/custom_tabbar_view.dart';
 import 'package:tayarh/widgets/main_btn/main_btn.dart';
 import '../../constant/size.dart';
 import '../../constant/text_strings.dart';
@@ -64,7 +64,7 @@ class FavoriteScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 2,
-                        child: Container(
+                        child: SizedBox(
                           height: 50, // Adjust the height here
                           child: TextField(
                             //controller: _searchController,
@@ -78,8 +78,8 @@ class FavoriteScreen extends StatelessWidget {
                                 // Adjust the border radius here
                                 borderSide: BorderSide.none, // No border
                               ),
-                              prefixIcon: Icon(Icons.search),
-                              contentPadding: EdgeInsets.symmetric(
+                              prefixIcon: const Icon(Icons.search),
+                              contentPadding: const EdgeInsets.symmetric(
                                   vertical:
                                   10.0), // Adjust the vertical padding
                             ),
@@ -90,7 +90,7 @@ class FavoriteScreen extends StatelessWidget {
                         width: 12.0,
                       ),
                       Expanded(
-                        child: Container(
+                        child: SizedBox(
                           height: 50,
                           child: MainButton(
                             title: "New Place",

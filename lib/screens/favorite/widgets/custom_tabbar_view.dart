@@ -5,7 +5,7 @@ import '../../../utils/constant/colors.dart';
 class CustomTabBarView extends StatelessWidget {
   final List<String> tabs;
 
-  const CustomTabBarView({Key? key, required this.tabs}) : super(key: key);
+  const CustomTabBarView({super.key, required this.tabs});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class CustomTabBarView extends StatelessWidget {
       child: TabBarView(
         children: tabs.map((String name) {
           return ListView.builder(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             itemCount: 10,
             itemBuilder: (context, index) {
               return Padding(
@@ -25,8 +25,8 @@ class CustomTabBarView extends StatelessWidget {
                     border: Border.all(width: 1.5, color: MyColors.borderColor),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

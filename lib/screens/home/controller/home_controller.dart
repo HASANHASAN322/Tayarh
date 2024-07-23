@@ -4,18 +4,21 @@ import 'package:get/get.dart';
 import 'package:tayarh/screens/my_wallet_page/my_wallet_page.dart';
 import 'package:tayarh/widgets/popup/popup.dart';
 
+import '../../favorite/favorites_screen.dart';
 import '../../history/history.dart';
 import '../../my_points_page/my_points_page.dart';
+import '../../notifications/notifications_screen.dart';
+import '../../set_trip_page/set_trip_page.dart';
+import '../../setting/setting.dart';
 
 class HomeController extends GetxController {
   static HomeController get instance => Get.find();
 
-  var lat = 34.7918927.obs;
-  var long = 36.3609726.obs;
-   bool is_way=true;
+  var lat = 34.7918927;
+  var long = 36.3609726;
+  bool isWay = false;
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
 
   @override
   void onInit() {
@@ -23,47 +26,76 @@ class HomeController extends GetxController {
     getCurrentLocation();
   }
 
-void openDrawer(){
-    scaffoldKey.currentState?.openDrawer() ;
+  void openDrawer() {
+    scaffoldKey.currentState?.openDrawer();
+    update();
+  }
+
+  void endTheTrip(){
+    isWay = false ;
     update() ;
+  }
 
-}
 
-  Future<dynamic> openPointBottomSheet(BuildContext context){
+
+
+
+  ///=================================== Open pages ===========================================
+  Future<dynamic> openNotificationBottomSheet(BuildContext context) {
     return showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (_) => const MyPoints(),) ;
-}
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => const NotificationsScreen(),
+    );
+  }
 
-Future<dynamic> openWalletBottomSheet(BuildContext context){
+  Future<dynamic> openFavoriteBottomSheet(BuildContext context) {
     return showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (_) => const MyWallet(),) ;
-}
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => const FavoriteScreen(),
+    );
+  }
 
-Future<dynamic> openHistoryBottomSheet(BuildContext context){
+  Future<dynamic> openPointBottomSheet(BuildContext context) {
     return showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (_) => const MyHistory(),) ;
-}
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => const MyPoints(),
+    );
+  }
 
-Future<dynamic> openSettingBottomSheet(BuildContext context){
+  Future<dynamic> openWalletBottomSheet(BuildContext context) {
     return showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (_) => const MySettings(),) ;
-}
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => const MyWallet(),
+    );
+  }
 
-Future<dynamic> openTripBottomSheet(BuildContext context){
+  Future<dynamic> openHistoryBottomSheet(BuildContext context) {
     return showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (_) => const SetTripWidget(),) ;
-}
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => const MyHistory(),
+    );
+  }
 
+  Future<dynamic> openSettingBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => const MySettings(),
+    );
+  }
+
+  Future<dynamic> openTripBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => const SetTripWidget(),
+    );
+  }
 
   Future<void> getCurrentLocation() async {
     bool serviceEnabled;
@@ -87,16 +119,15 @@ Future<dynamic> openTripBottomSheet(BuildContext context){
 
     if (permission == LocationPermission.deniedForever) {
       MyPobUp.errorSnackBar(
-          title: 'Location permissions are permanently denied, we cannot request permissions.');
+          title:
+              'Location permissions are permanently denied, we cannot request permissions.');
       return;
     }
 
     // When we reach here, permissions are granted and we can continue accessing the position of the device.
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    lat.value = position.latitude;
-    long.value = position.longitude;
-
-
+    lat = position.latitude;
+    long = position.longitude;
   }
 }

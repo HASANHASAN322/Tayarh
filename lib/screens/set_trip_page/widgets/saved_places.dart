@@ -6,11 +6,12 @@ import '../../../utils/constant/size.dart';
 
 class SavedPlaces extends StatelessWidget {
   const SavedPlaces({
-    super.key,
+    super.key, this.cities,
 
   });
 
 
+  final cities  ;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class SavedPlaces extends StatelessWidget {
             width: 15,
           ),
           Text(
-            'Future City',
+            'cities[]',
             style: TextStyle(
                 fontSize: 14,
                 color: dark

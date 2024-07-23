@@ -34,11 +34,7 @@ class MyTexts{
   static const String change = 'Change';
   static const String logout = 'Logout';
   static const String deleteAccount = 'Delete Account';
-  static const String transactions = 'Transactions';
-  static const String paymentMethods = 'Payment Methods';
-  static const String addPaymentMethods = 'Add Payment Methods';
-  static const String cash = 'Cash';
-  static const String history = 'History';
+
 
   static const String safety='Safety is our top priority. You should always know that we will always be by your side, wherever you go during your journey with Tayarh.';
 }

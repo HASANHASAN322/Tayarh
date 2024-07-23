@@ -6,9 +6,9 @@ import '../main_btn/main_btn.dart';
 
 class MyPlacesWidget extends StatelessWidget {
 
- final bool is_way;
+ final bool? isWay;
   const MyPlacesWidget({
-    super.key, required this.is_way,
+    super.key,  this.isWay,
   });
 
   @override
@@ -20,7 +20,7 @@ class MyPlacesWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            MainButton(title: is_way?'OTP':'New Place', fontSize: 14, onPressed: () {}),
+            MainButton(title: isWay!?'OTP':'New Place', fontSize: 14, onPressed: () {}),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: MySize.sm),
               width: 2,
@@ -33,7 +33,7 @@ class MyPlacesWidget extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return MainButton(
-                      title: is_way?"1":'Home',
+                      title: isWay!?"1":'Home',
                       fontSize: 14,
                       isBlue: false,
                       onPressed: () {});

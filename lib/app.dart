@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tayarh/screens/authentication/login/login.dart';
+import 'package:tayarh/binding/initial_bindings.dart';
+import 'package:tayarh/routes/page_routes.dart';
+import 'package:tayarh/routes/routes.dart';
 import 'package:tayarh/theme/app_theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -9,11 +11,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return   GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+        initialBinding: InitialBindings(),
+initialRoute: Routes.login,
         themeMode: ThemeMode.system,
         theme: MyAppTheme.lightTheme,
         darkTheme: MyAppTheme.darkTheme,
-        home:  const Login());
+      getPages: routes,
+    );
   }
 }
