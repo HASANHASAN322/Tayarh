@@ -29,7 +29,7 @@ class WidgetTitle extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.all(MySize.defaultSpace),
-      height: 180,
+      height: MediaQuery.of(context).size.height * 0.2,
       width: double.infinity,
       decoration: BoxDecoration(
           color: bgColor, borderRadius: BorderRadius.circular(12)),
@@ -48,9 +48,6 @@ class WidgetTitle extends StatelessWidget {
               ),
               Image(image: AssetImage(image)),
             ],
-          ),
-          const SizedBox(
-            height: 10,
           ),
           isPoint
               ? Row(

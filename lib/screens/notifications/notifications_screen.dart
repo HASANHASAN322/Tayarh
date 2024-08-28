@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tayarh/screens/notifications/controller/notifications_controller.dart';
 import '../../constant/size.dart';
 import '../../constant/text_strings.dart';
 import '../../theme/dark_mode.dart';
@@ -50,19 +52,22 @@ class NotificationsScreen  extends StatelessWidget {
             ),
 
             /// widget title and state
+
+          GetBuilder(
+              init: NotificationsController("5xez1UVKnoyKeAVoinOt"),
+              builder: (controller) =>
             ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) =>  const NotificationsInfo(
-                  firstCity: 'first',
-                  targetCity: 'target',
-                  cash: '26',
-                  isCompleted: true,
+                itemBuilder: (context, index) =>   NotificationsInfo(
+
+                  notifications: controller.info!.docs[index].data(),
+
                 ),
                 separatorBuilder: (context, index) => const SizedBox(
                   height: MySize.spaceBtwItems,
                 ),
-                itemCount: 5)
+                itemCount: controller.info!.docs.length))
           ]),
         ));
   }

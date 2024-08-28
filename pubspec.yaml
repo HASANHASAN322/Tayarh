@@ -43,10 +43,11 @@ dependencies:
   connectivity_plus: ^5.0.1
   flutter_drawer_menu: ^0.1.2
   intl: ^0.17.0
+  http: ^1.2.2
   dartz: ^0.10.1
-  http: ^0.13.5
-  shared_preferences: ^2.0.15
-  uuid: ^3.0.4
+  shared_preferences: ^2.0.0
+  cloud_firestore: any
+  firebase_auth: any
 
 dev_dependencies:
   flutter_test:

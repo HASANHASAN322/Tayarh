@@ -9,7 +9,7 @@ import '../../utils/constant/text_strings.dart';
 class PointButton extends StatelessWidget {
   const PointButton({super.key, required this.points, required this.onTap});
 
-  final int points ;
+  final String points ;
   final void Function() onTap ;
   @override
   Widget build(BuildContext context) {

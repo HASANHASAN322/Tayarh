@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -30,17 +27,17 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -49,20 +46,29 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCduiiJe_ugkWVMTNnV1pudSSpu19gf_xQ',
+    appId: '1:846122534071:web:3d5d6c61b2c2be6638f932',
+    messagingSenderId: '846122534071',
+    projectId: 'tayarh-6e60b',
+    authDomain: 'tayarh-6e60b.firebaseapp.com',
+    storageBucket: 'tayarh-6e60b.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDBBd9jdJidiHjmRCF0Tnr3TH9L6dqWW0Q',
-    appId: '1:53314612522:android:ad9ea8ab5e60b150014253',
-    messagingSenderId: '53314612522',
-    projectId: 'tayarh-cf3a3',
-    storageBucket: 'tayarh-cf3a3.appspot.com',
+    apiKey: 'AIzaSyCxNs8ZKVbV2JVuR2k31cYu2fKLouF8P0w',
+    appId: '1:846122534071:android:24806e7a2e9b2b3e38f932',
+    messagingSenderId: '846122534071',
+    projectId: 'tayarh-6e60b',
+    storageBucket: 'tayarh-6e60b.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCLkBH0X7Qxt1vuO8EGsnNdHapbsM4xPIo',
-    appId: '1:53314612522:ios:cf199ff8281cb680014253',
-    messagingSenderId: '53314612522',
-    projectId: 'tayarh-cf3a3',
-    storageBucket: 'tayarh-cf3a3.appspot.com',
+    apiKey: 'AIzaSyDWk9f1uKZyat9LndXre0908tIB405w6DY',
+    appId: '1:846122534071:ios:390e5ba47c25ddb938f932',
+    messagingSenderId: '846122534071',
+    projectId: 'tayarh-6e60b',
+    storageBucket: 'tayarh-6e60b.appspot.com',
     iosBundleId: 'com.example.tayarh',
   );
 }

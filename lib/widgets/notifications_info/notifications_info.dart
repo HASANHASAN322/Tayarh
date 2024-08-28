@@ -5,18 +5,21 @@ import '../../../utils/constant/colors.dart';
 import '../../../utils/constant/size.dart';
 
 class NotificationsInfo extends StatelessWidget {
-  const NotificationsInfo({
+   NotificationsInfo({
     super.key,
-    required this.firstCity,
-    required this.targetCity,
-    required this.cash,
-    required this.isCompleted,
+    // required this.firstCity,
+    // required this.targetCity,
+    // required this.cash,
+    // required this.isCompleted,
+    required this.notifications
   });
 
-  final String firstCity;
-  final String targetCity;
-  final String cash;
-  final bool isCompleted;
+  Map<String, dynamic> notifications ;
+
+  // final String firstCity;
+  // final String targetCity;
+  // final String cash;
+  // final bool isCompleted;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,7 @@ class NotificationsInfo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Welcome",
+                      "${notifications["title"]}",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -54,8 +57,7 @@ class NotificationsInfo extends StatelessWidget {
                     ),
                     const SizedBox(height: MySize.spaceBtwItems / 2),
                     Text(
-                      "Safety is our top priority. You should always know that we will always be by your side, wherever you go during your journey with Tayarh.",
-                      textAlign: TextAlign.start,
+                    "${notifications["description"]}",  textAlign: TextAlign.start,
                       softWrap: true,
                       style: TextStyle(
                         fontSize: 14,

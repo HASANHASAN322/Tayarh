@@ -49,6 +49,6 @@ class SetTripController extends GetxController{
   @override
   void onInit() {
     // TODO: implement onInit
-    getSuggestion('' ) ;
+    getSuggestion('') ;
   }
 }

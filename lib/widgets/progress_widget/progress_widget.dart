@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -12,12 +13,17 @@ class ProgressWidget extends StatelessWidget {
     required this.points,
   });
 
-  final DateTime date;
+  final Timestamp date;
   final String points;
 
   @override
   Widget build(BuildContext context) {
     final dark = DarkMode.isDarkMode(context);
+
+
+    DateTime dateTime = date.toDate();
+    String formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
+
     return Container(
       height: 80,
       width: double.infinity,
@@ -34,7 +40,7 @@ class ProgressWidget extends StatelessWidget {
             children: [
               /// date
               Text(
-                DateFormat('yyyy-MM-dd').format(date).toString(),
+                formattedDate,
                 style: TextStyle(
                     fontSize: 12,
                     color: dark ? MyColors.whiteColor : MyColors.blackColor),

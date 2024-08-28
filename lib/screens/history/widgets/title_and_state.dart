@@ -1,26 +1,32 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import '../../../theme/dark_mode.dart';
 import '../../../utils/constant/colors.dart';
 import '../../../utils/constant/size.dart';
 
 class HistoryInfo extends StatelessWidget {
-  const HistoryInfo({
+   HistoryInfo({
     super.key,
+   //  required this.date,
+
     required this.firstCity,
-    required this.targetCity, required this.cash, required this.isCompleted,
+     required this.targetCity,
+     required this.isCompleted,
+     required this.price
   });
 
+// final Timestamp date;
   final String firstCity;
   final String targetCity;
-  final String cash;
-  final bool isCompleted;
+
+  final String price;
+   final bool isCompleted;
   @override
   Widget build(BuildContext context) {
     final dark = DarkMode.isDarkMode(context);
-    DateTime date = DateTime(2024, 3, 15);
-    String formattedDate = DateFormat('yyyy-MM-dd').format(date);
+    // DateTime dateTime = date.toDate();
+    // String formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
     return Container(
       width: double.infinity,
       height: 180,
@@ -37,12 +43,12 @@ class HistoryInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 /// date
-                Text(
-                  formattedDate.toString(),
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: dark ? MyColors.whiteColor : MyColors.blackColor),
-                ),
+                // Text(
+                //   formattedDate??"",
+                //   style: TextStyle(
+                //       fontSize: 14,
+                //       color: dark ? MyColors.whiteColor : MyColors.blackColor),
+                // ),
 
                 /// progress state
                 Container(
@@ -123,7 +129,7 @@ class HistoryInfo extends StatelessWidget {
                     ),
                     const SizedBox(width: 5,) ,
                     Text(
-                      cash,
+                      price,
                       style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,

@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
         initialBinding: InitialBindings(),
-initialRoute: Routes.login,
+        initialRoute: Routes.login,
         themeMode: ThemeMode.system,
         theme: MyAppTheme.lightTheme,
         darkTheme: MyAppTheme.darkTheme,
-      getPages: routes,
+        getPages: routes,
     );
   }
 }
