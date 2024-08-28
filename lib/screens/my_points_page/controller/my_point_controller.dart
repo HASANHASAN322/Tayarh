@@ -24,19 +24,19 @@ class MyPointsController extends GetxController {
         .doc("5xez1UVKnoyKeAVoinOt").collection('added_points').get() ;
 
     info = doc;
+    isLoading = false;
   }
 
 
   void getDataMyPoints() async {
     isLoading = true;
 
-    isLoading = true;
     DocumentSnapshot points = await FirebaseFirestore.instance
         .collection('users')
         .doc("5xez1UVKnoyKeAVoinOt").get() ;
     myPoints = points['points'].toString() ;
         update();
-
+    isLoading = false;
 
   }
 }

@@ -55,7 +55,7 @@ class NotificationsScreen  extends StatelessWidget {
 
           GetBuilder(
               init: NotificationsController("5xez1UVKnoyKeAVoinOt"),
-              builder: (controller) =>
+              builder: (controller) => controller.isLoading ? const Center(child: CircularProgressIndicator()) :
             ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

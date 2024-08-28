@@ -17,7 +17,7 @@ class MyWalletController extends GetxController {
   void getDataMyWallet() {
     isLoading = true;
 
-    isLoading = true;
+
     FirebaseFirestore.instance
         .collection('my_wallet').where('userId', isEqualTo: userId)
         .snapshots()
@@ -27,6 +27,7 @@ class MyWalletController extends GetxController {
         print("Data fetched: ${snapshot.docs.first.data()}");
 
         update();
+        isLoading = false;
       } else {
         print("No data found in home collection.");
       }

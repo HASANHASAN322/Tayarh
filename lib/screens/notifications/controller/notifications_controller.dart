@@ -17,15 +17,15 @@ class NotificationsController extends GetxController {
   void getDataNotifications() {
     isLoading = true;
 
-    isLoading = true;
+
     FirebaseFirestore.instance
         .collection('notifications').where('userId', isEqualTo: userId)
         .snapshots()
         .listen((snapshot) {
       if (snapshot.docs.isNotEmpty) {
         info = snapshot;
-
         update();
+        isLoading = false;
       } else {
         print("No data found in home collection.");
       }
