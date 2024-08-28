@@ -1,14 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../../theme/dark_mode.dart';
 import '../../../utils/constant/colors.dart';
 import '../../../utils/constant/size.dart';
 
 class HistoryInfo extends StatelessWidget {
-   HistoryInfo({
+   const HistoryInfo({
     super.key,
-   //  required this.date,
 
     required this.firstCity,
      required this.targetCity,
