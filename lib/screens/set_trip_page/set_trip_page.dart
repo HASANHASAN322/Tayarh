@@ -149,7 +149,8 @@ class SetTripWidget extends StatelessWidget {
                   ),
 
                   /// add places
-                   const MyPlacesWidget(isWay: false,),
+                  const MyPlacesWidget(isWay: false,
+                  ),
                   const SizedBox(
                     height: MySize.spaceBtwItems,
                   ),

@@ -45,7 +45,7 @@ class CustomTabBarView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(place['addres'] , style: const TextStyle(fontSize: 18),),  // Display the address
+                                Text(place['name'] , style: const TextStyle(fontSize: 18),),  // Display the address
                                 const SizedBox(height: 15),
                                 Row(
                                   children: [
@@ -55,7 +55,7 @@ class CustomTabBarView extends StatelessWidget {
                                       size: 10,
                                     ),
                                     const SizedBox(width: 5),
-                                    Text('${place['desc']}', style: const TextStyle(fontSize: 18),),  // Display the description
+                                    Text('${place['description']}', style: const TextStyle(fontSize: 18),),  // Display the description
                                   ],
                                 )
                               ],

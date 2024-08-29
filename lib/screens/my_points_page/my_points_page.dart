@@ -27,78 +27,78 @@ class MyPoints extends StatelessWidget {
       child: GetBuilder<MyPointsController>(
           init: MyPointsController("5xez1UVKnoyKeAVoinOt"),
           builder: (controller) {
-            if (controller.myPoints == '') {
-              return const Center(child: CircularProgressIndicator());
-            }
+            return controller.myPoints == ''
+                ? const Center(child: CircularProgressIndicator())
+                :Column(
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 10,
+                        decoration: BoxDecoration(
+                            color: MyColors.borderColor,
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      const SizedBox(
+                        height: MySize.spaceBtwSections,
+                      ),
 
-            var myPointField = controller.myPoints;
+                      /// points
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              MyTexts.myPoints,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: dark
+                                      ? MyColors.whiteColor
+                                      : MyColors.blackColor),
+                            ),
+                          ]),
+                      WidgetTitle(
+                        title: MyTexts.tayarhPoints,
+                        image: MyImage.pointLogo,
+                        bgColor: MyColors.mainColor.withOpacity(0.4),
+                        isPoint: true,
+                        points: controller.myPoints,
+                      ),
 
-            if (myPointField == '') {
-              return const Center(
-                  child: Text("'my_point' field is missing in the document"));
-            }
-            return Column(
-              children: [
-                Container(
-                  width: 80,
-                  height: 10,
-                  decoration: BoxDecoration(
-                      color: MyColors.borderColor,
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                const SizedBox(
-                  height: MySize.spaceBtwSections,
-                ),
+                      const SizedBox(
+                        height: 10,
+                      ),
 
-                /// points
-                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                  Text(
-                    MyTexts.myPoints,
-                    style: TextStyle(
-                        fontSize: 18,
-                        color:
-                            dark ? MyColors.whiteColor : MyColors.blackColor),
-                  ),
-                ]),
-                WidgetTitle(
-                  title: MyTexts.tayarhPoints,
-                  image: MyImage.pointLogo,
-                  bgColor: MyColors.mainColor.withOpacity(0.4),
-                  isPoint: true,
-                  points: myPointField,
-                ),
-
-                const SizedBox(
-                  height: 10,
-                ),
-
-                /// progress
-                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                  Text(
-                    MyTexts.progress,
-                    style: TextStyle(
-                        fontSize: 18,
-                        color:
-                            dark ? MyColors.whiteColor : MyColors.blackColor),
-                  ),
-                ]),
-                const SizedBox(
-                  height: 10,
-                ),
-             SizedBox(
-               height: MediaQuery.of(context).size.height * 0.4,
-               child:   ListView.separated(
-                   shrinkWrap: true,
-
-                   itemBuilder: (context, index) => ProgressWidget(
-                     date: controller.info!.docs[index]["date"],
-                     points: controller.info!.docs[index]["bonus"],
-                   ) ,
-                   separatorBuilder: (context, index) => const SizedBox(height: 10,),
-                   itemCount: controller.info!.docs.length),
-             )
-              ],
-            );
+                      /// progress
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              MyTexts.progress,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: dark
+                                      ? MyColors.whiteColor
+                                      : MyColors.blackColor),
+                            ),
+                          ]),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      controller.info == null ? const Center() : SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        child: ListView.separated(
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) => ProgressWidget(
+                                  date: controller.info!.docs[index]["date"],
+                                  points: controller.info!.docs[index]["bonus"],
+                                ),
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                            itemCount: controller.info!.docs.isEmpty ? 0 : controller.info!.docs.length),
+                      )
+                    ],
+                  );
           }),
     );
   }

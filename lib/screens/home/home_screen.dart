@@ -155,9 +155,6 @@ class HomeScreen extends StatelessWidget {
                   right: MySize.defaultSpace,
                   child: FloatingActionButton(
                     onPressed: () async {
-                      Get.toNamed("/login");
-
-
                       final GoogleMapController mapController =
                       await homeController.controller.future;
                       mapController.animateCamera(
@@ -203,11 +200,9 @@ class HomeScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             MainButton(
-                              title: homeController.isWay? 'OTP' : 'New Place',
+                              title: homeController.isWay? 'OTP' : 'New Group',
                               fontSize: 14,
-                              onPressed: () {
-
-                              },
+                              onPressed: () => homeController.showAddGroupDialog(context),
                             ),
                             Container(
                               margin: const EdgeInsets.symmetric(horizontal: MySize.sm),

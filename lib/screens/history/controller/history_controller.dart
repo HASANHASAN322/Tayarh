@@ -17,7 +17,7 @@ class HistoryController extends GetxController {
   void getDataHistory() {
     isLoading = true;
 
-    isLoading = true;
+
     FirebaseFirestore.instance
         .collection('history').where('userId', isEqualTo: userId)
         .snapshots()
@@ -26,6 +26,7 @@ class HistoryController extends GetxController {
         info = snapshot;
 
         update();
+        isLoading = false;
       } else {
         print("No data found in home collection.");
       }

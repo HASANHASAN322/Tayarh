@@ -46,6 +46,8 @@ class SetTripController extends GetxController{
   }
 
 
+
+
   @override
   void onInit() {
     super.onInit();

@@ -19,11 +19,16 @@ class MyPointsController extends GetxController {
 
   Future<void> getDataMap() async {
     isLoading = true;
-    final doc = await FirebaseFirestore.instance
-        .collection('users')
-        .doc("5xez1UVKnoyKeAVoinOt").collection('added_points').get() ;
+    try{
+      final doc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc("5xez1UVKnoyKeAVoinOt").collection('added_points').get() ;
 
-    info = doc;
+      info = doc;
+
+    } catch(e){
+      throw '$e' ;
+    }
     isLoading = false;
   }
 

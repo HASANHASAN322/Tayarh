@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tayarh/screens/home/controller/home_controller.dart';
 
 import '../../constant/size.dart';
 import '../../utils/constant/colors.dart';
@@ -6,22 +8,22 @@ import '../main_btn/main_btn.dart';
 
 class MyPlacesWidget extends StatelessWidget {
   final bool? isWay;
-  final List? placses;
 
   const MyPlacesWidget({
     super.key,
     this.isWay,
-    this.placses,
+
   });
 
   @override
   Widget build(BuildContext context) {
-    final placesList = placses ?? [];
 
     return SizedBox(
       width: double.infinity,
       height: 35,
-      child: SingleChildScrollView(
+      child: GetBuilder(
+          init: HomeController(),
+          builder: (homeController) => SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
@@ -29,8 +31,6 @@ class MyPlacesWidget extends StatelessWidget {
               title: isWay! ? 'OTP' : 'New Place',
               fontSize: 14,
               onPressed: () {
-                print("Places List Length: ${placesList.length}");
-                print("Places List Content: $placesList");
               },
             ),
             Container(
@@ -39,7 +39,7 @@ class MyPlacesWidget extends StatelessWidget {
               height: 26,
               color: MyColors.mainColor,
             ),
-            if (placesList.isEmpty)
+            homeController.info == null || homeController.info!.docs.isEmpty ?
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: MySize.sm),
                 child: Text(
@@ -50,49 +50,30 @@ class MyPlacesWidget extends StatelessWidget {
                   ),
                 ),
               )
-            else
+            :
               ListView.separated(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return MainButton(
-                    title: isWay! ? "1" : placesList[index].toString(),
+                    title: homeController.isWay ? "1" :homeController.info!.docs[index]['name'].toString(),
                     fontSize: 14,
                     isBlue: false,
                     onPressed: () {
-                      print("Selected Place: ${placesList[index]}");
+
                     },
                   );
                 },
                 separatorBuilder: (context, index) => const SizedBox(
                   width: MySize.sm,
                 ),
-                itemCount: placesList.length,
+                itemCount: homeController.info!.docs.isEmpty ? 0 :homeController.info!.docs.length ,
               )
 
-            // ListView.separated(
-              //   scrollDirection: Axis.horizontal,
-              //   shrinkWrap: true,
-              //   physics: const NeverScrollableScrollPhysics(),
-              //   itemBuilder: (context, index) {
-              //     return MainButton(
-              //       title: isWay! ? "1" : placesList[index].toString(),
-              //       fontSize: 14,
-              //       isBlue: false,
-              //       onPressed: () {
-              //         print("Selected Place: ${placesList[index]}");
-              //       },
-              //     );
-              //   },
-              //   separatorBuilder: (context, index) => const SizedBox(
-              //     width: MySize.sm,
-              //   ),
-              //   itemCount: placesList.length,
-              // ),
           ],
         ),
-      ),
+      )),
     );
   }
 }

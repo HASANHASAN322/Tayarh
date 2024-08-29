@@ -65,7 +65,7 @@ class MyWallet extends StatelessWidget {
             image: MyImage.wallet,
             bgColor: MyColors.greenColor.withOpacity(0.4),
             isPoint: false,
-            cash: '${cash}',
+            cash: '$cash',
           ),
 
           const SizedBox(

@@ -51,26 +51,34 @@ class MyHistory extends StatelessWidget {
 
             /// widget title and state
 
-          GetBuilder(
-              init: HistoryController("5xez1UVKnoyKeAVoinOt"),
-              builder: (controller) =>
-                  ListView.separated(
-             shrinkWrap: true,
-               physics: const NeverScrollableScrollPhysics(),
-               itemBuilder: (context, index) =>   HistoryInfo(
-                // date: controller.info!.docs[index].data()['date'],
-                 firstCity: controller.info!.docs[index].data()['firstCity'],
-                 targetCity: controller.info!.docs[index].data()['targetCity'],
-
-                 price: controller.info!.docs[index].data()["price"],
-                  isCompleted: controller.info!.docs[index].data()['completed']??false,
-               ),
-               separatorBuilder: (context, index) => const SizedBox(
-                 height: MySize.spaceBtwItems,
-               ),
-               itemCount:  controller.info!.docs.length))
+            GetBuilder(
+                init: HistoryController("5xez1UVKnoyKeAVoinOt"),
+                builder: (controller) => ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => controller.info ==  null ?
+                        const Center() :
+                    controller.isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              color: MyColors.mainColor,
+                            ),
+                          )
+                        : HistoryInfo(
+                            firstCity: controller.info!.docs[index]
+                                .data()['firstCity'],
+                            targetCity: controller.info!.docs[index]
+                                .data()['targetCity'],
+                            price: controller.info!.docs[index].data()["price"],
+                            isCompleted: controller.info!.docs[index]
+                                    .data()['completed'] ??
+                                false,
+                          ),
+                    separatorBuilder: (context, index) => const SizedBox(
+                          height: MySize.spaceBtwItems,
+                        ),
+                    itemCount: controller.info!.docs.length))
           ]),
         ));
   }
 }
-
