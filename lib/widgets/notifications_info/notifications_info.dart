@@ -5,7 +5,7 @@ import '../../../utils/constant/colors.dart';
 import '../../../utils/constant/size.dart';
 
 class NotificationsInfo extends StatelessWidget {
-   NotificationsInfo({
+   const NotificationsInfo({
     super.key,
     // required this.firstCity,
     // required this.targetCity,
@@ -14,7 +14,7 @@ class NotificationsInfo extends StatelessWidget {
     required this.notifications
   });
 
-  Map<String, dynamic> notifications ;
+  final Map<String, dynamic> notifications ;
 
   // final String firstCity;
   // final String targetCity;

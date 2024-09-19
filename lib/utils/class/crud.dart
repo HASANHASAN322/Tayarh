@@ -18,10 +18,8 @@ class Crud {
           body: jsonEncode(data),
           headers: header,
         );
-        print(response);
         if (response.statusCode == 200 || response.statusCode == 201) {
           Map responseBody = jsonDecode(response.body);
-          print(response.body);
           return Right(responseBody);
         } else {
           return const Left(StatusRequest.serverFailure);
@@ -30,7 +28,6 @@ class Crud {
         return const Left(StatusRequest.offlineFailure);
       }
     } catch (_) {
-      print(_);
       return const Left(StatusRequest.serverFailure);
     }
   }
@@ -44,8 +41,6 @@ class Crud {
         );
 
         Map<String, dynamic> responseBody = jsonDecode(response.body);
-        print("response.statusCode is ${response.statusCode}");
-        print("response.body is $responseBody");
 
         if (response.statusCode == 200 || response.statusCode == 201) {
           setMyUser(UserModel.fromJson(responseBody));

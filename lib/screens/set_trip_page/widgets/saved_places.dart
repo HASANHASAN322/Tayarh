@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-
 import '../../../theme/dark_mode.dart';
 import '../../../utils/constant/colors.dart';
 import '../../../utils/constant/size.dart';
 
 class SavedPlaces extends StatelessWidget {
   const SavedPlaces({
-    super.key, this.cities,
+    super.key,
+    required this.city,});
 
-  });
-
-
-  final cities  ;
-
+  final String city;
   @override
   Widget build(BuildContext context) {
-    final dark = DarkMode.isDarkMode(context) ;
+    final dark = DarkMode.isDarkMode(context);
     return Container(
       height: 60,
       width: double.infinity,
       padding: const EdgeInsets.all(MySize.defaultSpace),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-              color: Colors.grey.withOpacity(0.6), width: 1)),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.grey.withOpacity(0.6),
+          width: 1,
+        ),
+      ),
       child: Row(
         children: [
           CircleAvatar(
@@ -38,14 +37,15 @@ class SavedPlaces extends StatelessWidget {
           const SizedBox(
             width: 15,
           ),
-          Text(
-            'cities[]',
-            style: TextStyle(
+          Expanded(
+            child: Text(
+              city, // Display the city name
+              style: TextStyle(
                 fontSize: 14,
-                color: dark
-                    ? MyColors.whiteColor
-                    : MyColors.blackColor),
-          )
+                color: dark ? MyColors.whiteColor : MyColors.blackColor,
+              ),
+            ),
+          ),
         ],
       ),
     );

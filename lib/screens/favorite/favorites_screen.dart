@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -8,9 +7,9 @@ import 'package:tayarh/screens/favorite/widgets/custom_tabbar_view.dart';
 import 'package:tayarh/widgets/main_btn/main_btn.dart';
 
 import '../../constant/size.dart';
-import '../../constant/text_strings.dart';
 import '../../theme/dark_mode.dart';
 import '../../utils/constant/colors.dart';
+import '../../utils/constant/text_strings.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
@@ -72,7 +71,7 @@ class FavoriteScreen extends StatelessWidget {
                               child: SizedBox(
                                 height: 50,
                                 child: MainButton(
-                                  title: "New Place",
+                                  title: MyTexts.newPlace,
                                   fontSize: 15,
                                   onPressed: () {
                                     Get.to(() => SelectLocationScreen(
@@ -91,6 +90,7 @@ class FavoriteScreen extends StatelessWidget {
                         const SizedBox(height: 16.0),
                         if (controller.favoritePlaces!.docs.isNotEmpty)
                           TabBar(
+                            isScrollable: true,
                             indicatorColor: Colors.blue,
                             labelColor: Colors.blue,
                             tabs: controller.favoritePlaces!.docs
@@ -108,30 +108,4 @@ class FavoriteScreen extends StatelessWidget {
             ),
         ); } ) ;
       }
-
 }
-
-
-
-// Expanded(
-//   flex: 2,
-//   child: SizedBox(
-//     height: 50,
-//     child: TextField(
-//       decoration: InputDecoration(
-//         labelText: 'Search',
-//         filled: true,
-//         fillColor: Colors.grey[200],
-//         border: OutlineInputBorder(
-//           borderRadius:
-//               BorderRadius.circular(8.0),
-//           borderSide: BorderSide.none,
-//         ),
-//         prefixIcon: const Icon(Icons.search),
-//         contentPadding:
-//             const EdgeInsets.symmetric(
-//                 vertical: 10.0),
-//       ),
-//     ),
-//   ),
-// ),

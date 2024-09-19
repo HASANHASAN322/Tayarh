@@ -26,7 +26,7 @@ class PhoneNumberFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding:
         const EdgeInsets.symmetric(horizontal: 20),
-        labelText: 'Phone Number',
+        labelText: 'Phone Number'.tr,
         labelStyle: TextStyle(color: MyColors.borderColor),
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -64,7 +64,7 @@ class PhoneNumberFieldWidget extends StatelessWidget {
       },
       validator: (value) {
         if (value == null ) {
-          return 'Phone number is required';
+          return 'Phone number is required'.tr;
         }
         return null;
       },

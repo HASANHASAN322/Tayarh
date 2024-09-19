@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tayarh/constant/size.dart';
 import 'package:tayarh/utils/constant/colors.dart';
+
+import '../../utils/constant/text_strings.dart';
 import 'controller/map_controller.dart';
 
 class SelectLocationScreen extends StatelessWidget {
@@ -28,9 +29,9 @@ class SelectLocationScreen extends StatelessWidget {
                 IconButton(
                     onPressed: () => Get.back(),
                     icon: const Icon(Icons.arrow_back_ios)),
-                const Text(
-                  'Select Place Location',
-                  style: TextStyle(
+                 Text(
+                  MyTexts.selectLocation,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
@@ -46,7 +47,7 @@ class SelectLocationScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: MyColors.mainColor,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Center(child: Text('Save')),
+                    child:  Center(child: Text(MyTexts.save)),
                   ),
                 )
               ],

@@ -95,9 +95,7 @@ bool isLoading=false;
                         .where('name', isEqualTo: selectedTab)
                         .limit(1)
                         .get();
-
                     if (querySnapshot.docs.isNotEmpty) {
-                      // Assuming that the document ID is what you want to update
                       String docId = querySnapshot.docs.first.id;
 
                       await FirebaseFirestore.instance
@@ -118,7 +116,7 @@ bool isLoading=false;
                       });
                       Get.back();
                       MyPobUp.successSnackBar(title: 'Added successfully');
-                      Get.offAll(HomeScreen());
+                      Get.offAll(const HomeScreen());
                     } else {
                       Get.snackbar(
                         'Error',

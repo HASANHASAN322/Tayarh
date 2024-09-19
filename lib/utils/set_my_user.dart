@@ -11,7 +11,6 @@ import '../constant/constant_data.dart';
 import '../models/user_model.dart';
 
 setMyUser(UserModel newUser) {
-  print("New User is ${newUser.toJson()}");
   ConstData.myUser = newUser;
   MyServices myServices = Get.find();
   myServices.sharedPreferences

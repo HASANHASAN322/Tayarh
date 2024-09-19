@@ -41,15 +41,15 @@ class PointButton extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '$points',
+                  points,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: dark ? MyColors.whiteColor : MyColors.darkColor,
                   ),
                 ),
-                const Text(
+                Text(
                   MyTexts.points,
-                  style: TextStyle(fontSize: 10),
+                  style: TextStyle(fontSize: 9),
                 ),
               ],
             )

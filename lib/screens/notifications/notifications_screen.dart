@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tayarh/screens/notifications/controller/notifications_controller.dart';
 import '../../constant/size.dart';
-import '../../constant/text_strings.dart';
 import '../../theme/dark_mode.dart';
 import '../../utils/constant/colors.dart';
+import '../../utils/constant/text_strings.dart';
 import '../../widgets/notifications_info/notifications_info.dart';
 
 

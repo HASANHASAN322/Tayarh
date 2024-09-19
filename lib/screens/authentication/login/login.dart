@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tayarh/screens/authentication/login/controller/login_controller.dart';
 import 'package:tayarh/screens/authentication/login/widgets/phone_number_field.dart';
 import 'package:tayarh/screens/authentication/login/widgets/term_of_use.dart';
+import 'package:tayarh/screens/home/home_screen.dart';
 import 'package:tayarh/theme/dark_mode.dart';
 import 'package:tayarh/utils/constant/text_strings.dart';
 import 'package:tayarh/widgets/main_btn/main_btn.dart';
@@ -54,7 +55,7 @@ class Login extends StatelessWidget {
                           /// login btn
                           MainButton(
                             title: MyTexts.signIn,
-                            onPressed: () => controller.signIn(),
+                            onPressed: () =>Get.to(const HomeScreen()),
                             width: double.infinity,
                           )
                         ],

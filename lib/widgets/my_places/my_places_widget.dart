@@ -17,7 +17,6 @@ class MyPlacesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SizedBox(
       width: double.infinity,
       height: 35,
@@ -28,10 +27,9 @@ class MyPlacesWidget extends StatelessWidget {
         child: Row(
           children: [
             MainButton(
-              title: isWay! ? 'OTP' : 'New Place',
+              title: 'New Group',
               fontSize: 14,
-              onPressed: () {
-              },
+              onPressed: ()=> homeController.showAddGroupDialog(context) ,
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: MySize.sm),
@@ -57,7 +55,7 @@ class MyPlacesWidget extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return MainButton(
-                    title: homeController.isWay ? "1" :homeController.info!.docs[index]['name'].toString(),
+                    title:homeController.info!.docs[index]['name'].toString(),
                     fontSize: 14,
                     isBlue: false,
                     onPressed: () {

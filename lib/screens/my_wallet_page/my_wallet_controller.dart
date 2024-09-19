@@ -24,12 +24,10 @@ class MyWalletController extends GetxController {
         .listen((snapshot) {
       if (snapshot.docs.isNotEmpty) {
         info = snapshot;
-        print("Data fetched: ${snapshot.docs.first.data()}");
-
         update();
         isLoading = false;
       } else {
-        print("No data found in home collection.");
+        throw "No data found in home collection.";
       }
     });
   }

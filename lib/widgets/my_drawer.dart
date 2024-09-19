@@ -44,7 +44,7 @@ class MyDrawer extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             bottom: 2.0, left: 15, top: 10),
                         child: DrawerItem(
-                          name: "Notifications",
+                          name: "Notifications".tr,
                           icon: MyImage.notification,
                           onPress: () => homeController.openNotificationBottomSheet(context),
                         ),
@@ -53,19 +53,16 @@ class MyDrawer extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             top: 20, bottom: 2.0, left: 15),
                         child: DrawerItem(
-                          name: "Favorites",
+                          name: "Favorites".tr,
                           icon: MyImage.favorites,
                           onPress: () => homeController.openFavoriteBottomSheet(context),
                         ),
                       ),
-
-
-
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 2, left: 15),
                         child: DrawerItem(
-                            name: "My Points",
+                            name: "My Points".tr,
                             icon: MyImage.pointLogo,
                             onPress: () =>
                                 homeController.openPointBottomSheet(context)),
@@ -74,7 +71,7 @@ class MyDrawer extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 2, left: 15),
                         child: DrawerItem(
-                            name: "My Wallet",
+                            name: "My Wallet".tr,
                             icon: MyImage.wallet,
                             onPress: () =>  homeController.openWalletBottomSheet(context)),
                       ),
@@ -82,7 +79,7 @@ class MyDrawer extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 2, left: 15),
                         child: DrawerItem(
-                            name: "History",
+                            name: "History".tr,
                             icon: MyImage.history,
                             onPress: () => homeController.openHistoryBottomSheet(context)),
                       ),
@@ -90,7 +87,7 @@ class MyDrawer extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 2, left: 15),
                         child: DrawerItem(
-                            name: "Settings",
+                            name: "Settings".tr,
                             icon: MyImage.settings,
                             onPress: () => homeController.openSettingBottomSheet(context)),
                       ),
@@ -102,42 +99,42 @@ class MyDrawer extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, left: 15),
                         child: DrawerItem(
-                            name: "Suggest a Feature",
+                            name: "Suggest a Feature".tr,
                             icon: MyImage.suggestAFeature,
                             onPress: () => onItemPressed(context, index: 7)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, left: 15),
                         child: DrawerItem(
-                            name: "Report an Issue",
+                            name: "Report an Issue".tr,
                             icon: MyImage.reportAnIssue,
                             onPress: () => onItemPressed(context, index: 7)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, left: 15),
                         child: DrawerItem(
-                            name: "Rate Us",
+                            name: "Rate Us".tr,
                             icon: MyImage.rateUs,
                             onPress: () => onItemPressed(context, index: 7)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, left: 15),
                         child: DrawerItem(
-                            name: "Invite Friends",
+                            name: "Invite Friends".tr,
                             icon: MyImage.inviteFriends,
                             onPress: () => onItemPressed(context, index: 7)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, left: 15),
                         child: DrawerItem(
-                            name: "Drive with Us",
+                            name: "Drive with Us".tr,
                             icon: MyImage.driveWithUs,
                             onPress: () => onItemPressed(context, index: 7)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, left: 15),
                         child: DrawerItem(
-                            name: "Privacy Policy",
+                            name: "Privacy Policy".tr,
                             icon: MyImage.privacyPolicy,
                             onPress: () => onItemPressed(context, index: 7)),
                       ),

@@ -28,7 +28,7 @@ class HistoryController extends GetxController {
         update();
         isLoading = false;
       } else {
-        print("No data found in home collection.");
+        throw "No data found in home collection.";
       }
     });
   }

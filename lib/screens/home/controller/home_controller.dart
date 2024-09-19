@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'package:tayarh/screens/favorite/controller/favorites_controller.dart';
 import 'package:tayarh/screens/my_wallet_page/my_wallet_page.dart';
 import 'package:tayarh/utils/constant/colors.dart';
@@ -20,15 +21,30 @@ class HomeController extends GetxController {
   static HomeController get instance => Get.find();
   final Completer<GoogleMapController> controller =
       Completer<GoogleMapController>();
-  var lat = 34.7918927;
-  var long = 36.3609726;
-  bool isWay = false;
+  var lat = 31.7225;
+  var long = 35.9933;
   QuerySnapshot<Map<String, dynamic>>? info;
   String myPoints = '';
   bool isLoading = false;
+  RxBool canCallDriver = false.obs;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? _mapSubscription;
   final favController = Get.put(FavoritesController('5xez1UVKnoyKeAVoinOt')) ;
+
+  List<Marker> markers = [];
+  late final Marker fromTrip;
+  late final Marker whereToTrip;
+  final RxDouble tripDist = 0.0.obs;
+  var polylines = <Polyline>{}.obs;
+  RxBool isWay =false.obs;
+  RxBool driverSelected =false.obs;
+  RxBool canOrder =false.obs;
+  var name= ''.obs;
+  var rate= ''.obs;
+  var rateCount= ''.obs;
+  var model= ''.obs;
+  var carCode= ''.obs;
+  var driverId= ''.obs;
 
   @override
   void onInit() {
@@ -36,8 +52,9 @@ class HomeController extends GetxController {
     getDataMap();
     getCurrentLocation();
     getPoints();
+    getDriversMap();
+    // getTripsMap();
   }
-
   @override
   void onClose() {
     _mapSubscription?.cancel();
@@ -46,34 +63,100 @@ class HomeController extends GetxController {
 
   ///===================================== Get Data Functions =======================================
 
-  void getPoints() async {
-    DocumentSnapshot points = await FirebaseFirestore.instance
+  /// get points
+  void getPoints() {
+    FirebaseFirestore.instance
         .collection('users')
         .doc("5xez1UVKnoyKeAVoinOt")
-        .get();
-    myPoints = points['points'].toString();
-    update() ;
+        .snapshots()
+        .listen((DocumentSnapshot snapshot) {
+      if (snapshot.exists && snapshot.data() != null) {
+        myPoints = snapshot['points'].toString();
+        update();
+      } else {
+        // Handle the case where the document doesn't exist or has no data
+        myPoints = "0";
+        update();
+      }
+    });
   }
-
-  Future<void> getDataMap() async {
+  /// get places
+  void getDataMap() {
     isLoading = true;
-    final doc = await FirebaseFirestore.instance
+    FirebaseFirestore.instance
         .collection('users')
         .doc("5xez1UVKnoyKeAVoinOt")
         .collection('places')
-        .get();
+        .snapshots()
+        .listen((QuerySnapshot<Map<String, dynamic>> snapshot) {
+      info = snapshot; // Update the info variable with the new snapshot
+      update(); // Notify listeners to update the UI
+      isLoading = false;
+    });
+  }
+  /// get drivers
+  void getDriversMap() async {
+    isLoading = true;
+    FirebaseFirestore.instance
+        .collection('driver')
+        .snapshots()
+        .listen((snapshot) async {
+      if (snapshot.docs.isNotEmpty) {
+        markers.clear();
+        for (var doc in snapshot.docs) {
 
-    info = doc;
-    update();
-    isLoading = false;
+          if (doc['status'] == 'available') {
+            GeoPoint geoPoint = doc['current_location'];
+            final String carCode = doc['code'];
+            final String name = doc['name'];
+            final String rate = doc['rate'];
+            final String rateCount = doc['rate_count'].toString();
+            final String model = doc['model'];
+            final String driverId = doc.id;
+
+            final BitmapDescriptor customIcon = await BitmapDescriptor.fromAssetImage(
+              const ImageConfiguration(size: Size(48, 48)),
+              'assets/icons/taxi.png',
+            );
+
+            Marker marker = Marker(
+              onTap: () {
+                this.carCode.value = carCode;
+                this.name.value = name;
+                this.rate.value = rate;
+                this.rateCount.value = rateCount;
+                this.model.value = model;
+                this.driverId.value = driverId;
+
+                canOrder.value = true;
+              },
+              markerId: MarkerId(doc.id),
+              position: LatLng(geoPoint.latitude, geoPoint.longitude), // Correctly using lat/lng here
+              icon: customIcon,
+              infoWindow: InfoWindow(title: "Driver: $name"),
+            );
+            markers.add(marker);
+          }
+        }
+
+        isLoading = false;
+        update();
+      } else {
+        throw ("No drivers found in the driver collection.");
+      }
+
+      isLoading = false;
+    });
   }
 
+
+
+  /// drawer
   void openDrawer() {
     scaffoldKey.currentState?.openDrawer();
     update();
   }
-
-
+  /// add group
   Future<void> showAddGroupDialog(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     String placeName = '';
@@ -130,9 +213,7 @@ class HomeController extends GetxController {
       },
     );
   }
-
-
-
+  /// add place
   Future<void> addPlace(String name, List<Map<String, dynamic>> placesList) async {
 
     Map<String, dynamic> data = {
@@ -153,11 +234,39 @@ class HomeController extends GetxController {
     }
   }
 
+/// ======================================= trip function ================================================
 
-  void endTheTrip() {
-    isWay = false;
-    update();
+  void endTheTrip(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("End Trip Request"),
+          content: const Text("The request will be sent to the driver to end the trip from you both. We hope that the trip was good for you."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                isLoading = true ;
+                isWay.value = false ;
+                canCallDriver.value = false ;
+                driverSelected.value = false ;
+                canOrder.value = false ;
+                Navigator.of(context).pop();
+                isLoading = false ;
+                update();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
+
+
+  /// ==========================================================================================================
+
 
   ///=================================== Open pages ===========================================
   Future<dynamic> openNotificationBottomSheet(BuildContext context) {
@@ -212,7 +321,7 @@ class HomeController extends GetxController {
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (_) => const SetTripWidget(),
+      builder: (_) =>  SetTripWidget(fromLat: lat,fromLong: long,),
     );
   }
 
@@ -234,13 +343,19 @@ class HomeController extends GetxController {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      MyPobUp.warningSnackBar(title: 'We Need Location Service Enabled');
-      return;
+    // Continuously check and request for location services to be enabled
+    while (true) {
+      serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        MyPobUp.warningSnackBar(title: 'We Need Location Service Enabled');
+        // Optionally, add a delay before checking again to avoid spamming the user
+        await Future.delayed(const Duration(seconds: 5));
+        continue; // Continue the loop if the service is not enabled
+      }
+      break; // Exit the loop if the service is enabled
     }
 
+    // Check and request for location permissions
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -253,14 +368,15 @@ class HomeController extends GetxController {
     if (permission == LocationPermission.deniedForever) {
       MyPobUp.errorSnackBar(
           title:
-              'Location permissions are permanently denied, we cannot request permissions.');
+          'Location permissions are permanently denied, we cannot request permissions.');
       return;
     }
 
-    // When we reach here, permissions are granted and we can continue accessing the position of the device.
+    // Get the current location if all conditions are met
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     lat = position.latitude;
     long = position.longitude;
   }
+
 }

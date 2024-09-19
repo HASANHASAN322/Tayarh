@@ -1,40 +1,51 @@
+import 'package:get/get.dart';
 
-class MyTexts{
+class MyTexts {
+  static String get appNameTitle => 'appNameTitle'.tr;
+  static String get signIn => 'signIn'.tr;
+  static String get welcome => 'welcome'.tr;
+  static String get userName => 'userName'.tr;
+
+  static String get iAcceptThe => 'iAcceptThe'.tr;
+  static String get termOfServices => 'termOfServices'.tr;
+  static String get and => 'and'.tr;
+  static String get privacyPolicy => 'privacyPolicy'.tr;
+
+  static String get points => 'points'.tr;
+  static String get whereTo => 'whereTo'.tr;
+  static String get tayarhPoints => 'tayarhPoints'.tr;
+  static String get tayarhCash => 'tayarhCash'.tr;
+  static String get wallet => 'wallet'.tr;
+  static String get myPoints => 'myPoints'.tr;
+  static String get addFounds => 'addFounds'.tr;
+  static String get progress => 'progress'.tr;
+  static String get transactions => 'transactions'.tr;
+  static String get paymentMethods => 'paymentMethods'.tr;
+  static String get addPaymentMethods => 'addPaymentMethods'.tr;
+  static String get cash => 'cash'.tr;
+  static String get history => 'history'.tr;
+  static String get setting => 'setting'.tr;
+  static String get phoneNumber => 'phoneNumber'.tr;
+  static String get language => 'language'.tr;
+  static String get theme => 'theme'.tr;
+  static String get change => 'change'.tr;
+  static String get logout => 'logout'.tr;
+  static String get deleteAccount => 'deleteAccount'.tr;
+
+  static String get safety => 'safety'.tr;
 
 
-  static const String appNameTitle = "Tayarh";
-  static const String signIn = "Login";
-  static const String welcome = "Welcome Back";
-  static const String userName = "User Name";
-
-  static const String iAcceptThe = "By signing, you agree to our ";
-  static const String termOfServices = "Term Of Services ";
-  static const String and = "and ";
-  static const String privacyPolicy = "Privacy Policy";
+  static String get  notifications => 'Notifications'.tr;
+  static String get favorite => 'Favorite'.tr;
+  static String get newPlace=> 'New Place'.tr;
 
 
-
-  static const String points = "T Point";
-  static const String  whereTo =  'Where to?';
-  static const String tayarhPoints = "Tayarh Point";
-  static const String tayarhCash = "Tayarh Cash";
-  static const String wallet = 'My Wallet';
-  static const String myPoints = 'My Point:';
-  static const String addFounds = '+ Add Founds';
-  static const String progress = 'Progress';
-  static const String transactions = 'Transactions';
-  static const String paymentMethods = 'Payment Methods';
-  static const String addPaymentMethods = 'Add Payment Methods';
-  static const String cash = 'Cash';
-  static const String history = 'History';
-  static const String setting = 'Settings';
-  static const String phoneNumber = 'Phone Number';
-  static const String language = 'Language';
-  static const String theme = 'Theme';
-  static const String change = 'Change';
-  static const String logout = 'Logout';
-  static const String deleteAccount = 'Delete Account';
+  static String get save=>  'Save'.tr;
+  static String get  selectLocation=>  'Select Location'.tr;
+  static String get  tripTime=>  'Trip Time'.tr;
+  static String get  tripCost=>  'Trip Cost'.tr;
 
 
-  static const String safety='Safety is our top priority. You should always know that we will always be by your side, wherever you go during your journey with Tayarh.';
+
+
 }
